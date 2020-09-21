@@ -23,14 +23,14 @@ mysql -u $db_user -p$db_pass -e "drop database if exists $db_name;"
 mysql -u $db_user -p$db_pass -e "create database $db_name;"
 mysql -u $db_user -p$db_pass $db_name < /home/$user/bkdata/$domain.sql
 if [ $? -eq 0 ] ; then
-	echo "Clone to $restore successful"	
+	echo "Clone to $restore successful"
 else
 	echo "Clone to $restore fail"
 fi
 mysql -u $db_user -p$db_pass << EOF
 use $db_name;
-update ${db_prefix}options set option_value = 'http://$restore' where option_id = 1;
-update ${db_prefix}options set option_value = 'http://$restore' where option_id = 2;
+update ${prefix}options set option_value = 'http://$restore' where option_id = 1;
+update ${prefix}options set option_value = 'http://$restore' where option_id = 2;
 EOF
 sed -i "s/$db_prefix/$prefix/g" $cnf
 rm -rf bkdata; exit
