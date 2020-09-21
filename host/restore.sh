@@ -1,5 +1,4 @@
 #!/bin/sh
-cd; clear
 user=`ls -1 /home`
 domain=insertdomain
 prefix=insertprefix
@@ -13,7 +12,7 @@ select restore in $ls; do
 		echo "Please delete website and create website with wordpress"
 	fi
 done
-rm -rf $restore/DocumentRoot
+cd; rm -rf $restore/DocumentRoot
 tar -xzf /home/$user/bkdata/$domain.gz --directory $restore
 db_name=`grep 'DB_NAME' $cnf | awk -F"'" '{print $4}'`
 db_user=`grep 'DB_USER' $cnf | awk -F"'" '{print $4}'`
