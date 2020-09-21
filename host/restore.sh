@@ -1,5 +1,5 @@
 #!/bin/sh
-clear; cd
+cd; clear
 user=`ls -1 /home`
 domain=insertdomain
 prefix=insertprefix
