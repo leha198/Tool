@@ -76,8 +76,8 @@ EOF
 function menu {
     echo "~~~~~~~~~~~~~~~~~~~~~~~~"
     echo "1. Backup website"
-	echo "2. Clone website"
-	echo "3. Exit"
+    echo "2. Clone website"
+    echo "3. Exit"
     echo "~~~~~~~~~~~~~~~~~~~~~~~~"
 }
 function pause {
