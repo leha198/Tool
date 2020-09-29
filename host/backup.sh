@@ -66,8 +66,8 @@ function clone {
     fi
     mysql -u $db_user -p$db_pass << EOF
 use $db_name;
-update ${db_prefix}options set option_value = 'http://$restore' where option_id = 1;
-update ${db_prefix}options set option_value = 'http://$restore' where option_id = 2;
+update ${prefix}options set option_value = 'http://$restore' where option_id = 1;
+update ${prefix}options set option_value = 'http://$restore' where option_id = 2;
 EOF
     cp -r $domain/DocumentRoot $restore > /dev/null 2>&1
     sed -i "s/wp_/$prefix/g" $cnf
@@ -88,7 +88,7 @@ function option {
     read -p "Please enter choice:" choice
     case $choice in
         1 ) check; bkdb; bkcode; pause;;
-        2 ) check; bkcode; clone; pause;;
+        2 ) check; bkdb; clone; pause;;
         3 ) exit;;
         * ) echo "Error..."; sleep 1
     esac
