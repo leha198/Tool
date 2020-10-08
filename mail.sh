@@ -1,5 +1,4 @@
-#!/bin/bash
-#Thong so mail server
+#!/bin/sh
 mail1=
 mail2=
 pw1=
