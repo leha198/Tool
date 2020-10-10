@@ -11,20 +11,19 @@ curl script.lehait.net/centos6.sh | sh
 wget script.lehait.net/mount.sh; sh mount.sh
 ```
 ### ======Support FO/SEO/SE======
-#### Support FO/SEO/SE
-##### Backup, clone webiste WP
+#### Backup, clone webiste WP
 ```
 wget script.lehait.net/backup.sh; sh backup.sh
 ```
-##### Copy to remote server
+#### Copy to remote server
 ```
 wget script.lehait.net/copy.sh; sh copy.sh
 ```
-##### Create log
+#### Create log
 ```
 curl script.lehait.net/log.sh | sh
 ```
-##### Check inode
+#### Check inode
 ```
 curl script.lehait.net/inode.sh | sh
 ```
