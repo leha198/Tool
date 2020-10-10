@@ -35,7 +35,7 @@ else
     echo "Backup code $domain fail"
 fi
 cd
-wget -q script.lehait.net/host/restore.sh -O bkdata/restore.sh
+wget -q script.lehait.net/restore.sh -O bkdata/restore.sh
 sed -i -e "s/insertdomain/$domain/g" -e "s/insertprefix/$prefix/g" bkdata/restore.sh
 function remote {
 	while read -p "Copy to server:" host; do
