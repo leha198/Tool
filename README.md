@@ -1,3 +1,4 @@
+
 ### Install Cyberpanel
 ```
 curl script.lehait.net/cyber.sh | sh
