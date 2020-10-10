@@ -15,3 +15,15 @@ wget script.lehait.net/mount.sh; sh mount.sh
 ``
 wget script.lehait.net/backup.sh; sh backup.sh
 ``
+#### Copy to remote server
+``
+wget script.lehait.net/copy.sh; sh copy.sh
+``
+#### Create log
+``
+curl script.lehait.net/log.sh | sh
+``
+#### Check inode
+``
+curl script.lehait.net/inode.sh | s
+``
