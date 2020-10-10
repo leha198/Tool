@@ -1,6 +1,7 @@
 ### Install Cyberpanel
-``
+```
 curl script.lehait.net/cyber.sh | sh
+```
 ### Update CentOS6 to CentOS7
 ``
 curl script.lehait.net/centos6.sh | sh
