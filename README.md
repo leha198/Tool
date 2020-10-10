@@ -27,4 +27,4 @@ curl script.lehait.net/log.sh | sh
 ```
 curl script.lehait.net/inode.sh | sh
 ```
-### ===========================
+### ==========================
