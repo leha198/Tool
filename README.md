@@ -10,7 +10,7 @@ curl script.lehait.net/centos6.sh | sh
 ``
 wget script.lehait.net/mount.sh; sh mount.sh
 ``
-### ===========================================
+### ===========================
 #### Support FO/SEO/SE
 ##### Backup, clone webiste WP
 ``
@@ -28,4 +28,4 @@ curl script.lehait.net/log.sh | sh
 ``
 curl script.lehait.net/inode.sh | s
 ``
-### ===========================================
+### ===========================
