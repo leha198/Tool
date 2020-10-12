@@ -19,7 +19,7 @@ mkfs.ext4 $disk > /dev/null 2>&1
 mount $disk /backup_datda
 echo "======================================================================"
 echo "Start sync data to external disk"
-rsync -avzh $dir/ /backup_datda
+rsync -avzh $dir/ /backup_data
 umount $disk
 rm -rf $dir/* /backup_datda
 mount $disk $dir
