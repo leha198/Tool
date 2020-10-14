@@ -4,10 +4,8 @@ cyber(){
 wget -O cyberpanel.sh https://cyberpanel.net/install.sh
 chmod +x cyberpanel.sh
 ./cyberpanel.sh -v ols -p r
-cd /usr/local/lsws
-find ./ -type f -name "php.ini" | xargs sed -i -e 's/2M/1024M/g' -e 's/128M/512M/g' -e 's/8M/1024M/g'
-find ./ -type f -name "php.ini" | xargs sed -i -e 's/time = 30/time = 1000/g' -e 's/time = 60/time = 1000/g'
-cd
+find /usr/local/lsws -type f -name "php.ini" | xargs sed -i -e 's/2M/1024M/g' -e 's/128M/256M/g' -e 's/8M/1024M/g'
+find /usr/local/lsws -type f -name "php.ini" | xargs sed -i -e 's/time = 30/time = 300/g' -e 's/time = 60/time = 300/g'
 sqlpw=$(cat /etc/cyberpanel/mysqlPassword)	
 mysql -u root -p$sqlpw <<EOF	
 use cyberpanel;	
