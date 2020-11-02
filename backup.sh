@@ -42,6 +42,7 @@ function bkcode {
     else
         echo "Backup code $domain fail"
     fi
+    cd
 }
 function clone {
     ls=`ls -l -Ibkdata -Ilog -I$domain | awk '/^d/ {print $9}'`
