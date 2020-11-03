@@ -88,9 +88,21 @@ function pause {
 function option {
     read -p "Please enter choice:" choice
     case $choice in
-        1 ) check; bkdb; bkcode; pause;;
-        2 ) check; bkdb; clone; pause;;
-        3 ) exit;;
+        1 ) check
+            bkdb
+            bkcode
+            pause
+            ;;
+        2 ) 
+            check
+            bkdb
+            clone
+            pause
+            ;;
+        3 ) 
+            rm -f $0
+            exit
+            ;;
         * ) echo "Error..."; sleep 1
     esac
 }
