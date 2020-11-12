@@ -29,3 +29,8 @@ curl script.lehait.net/log.sh | sh
 curl script.lehait.net/inode.sh | sh
 ```
 ### =========================
+#### Scan malware
+```
+curl script.lehait.net/scan.sh | sh
+```
+### =========================
