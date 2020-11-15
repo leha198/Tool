@@ -29,9 +29,7 @@ rm -rf cyberpanel*
 }
 #Check install cyberpanel
 if [ -d /usr/local/CyberCP ]; then
-	echo "Cyberpanel be installed."
 	cyberpanel upgrade
 else
-	echo "OS not installed Cyberpanel. Start install Cyberpanel"
 	sleep 2 && install
 fi
