@@ -14,14 +14,14 @@ else
         sleep 2 && exit
 fi
 #Start mount data to external disk
-mkdir -p /backup_datda
+mkdir -p /backup_data
 mkfs.ext4 $disk > /dev/null 2>&1
-mount $disk /backup_datda
+mount $disk /backup_data
 echo "======================================================================"
 echo "Start sync data to external disk"
 rsync -avzh $dir/ /backup_data
 umount $disk
-rm -rf $dir/* /backup_datda
+rm -rf $dir/* /backup_data
 mount $disk $dir
 echo "$disk $dir ext4 defaults 0 1" >> /etc/fstab
 read -p "The process mount successful. Do you want to restart the server? [Y/n]: " boot
