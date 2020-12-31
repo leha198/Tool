@@ -1,9 +1,8 @@
 #!/bin/sh
-service imunify-antivirus stop
+systemctl stop imunify-antivirus
 sqlite3 /var/imunify360/imunify360.db <<EOF
-DELETE FROM malware_history;
-DELETE FROM malware_hits;
-DELETE FROM malware_scans;
+PRAGMA foreign_keys = ON;
 DELETE FROM malware_user_infected;
+DELETE FROM malware_scans where total_malicious = 0;
 EOF
-service imunify-antivirus start
+systemctl start imunify-antivirus
