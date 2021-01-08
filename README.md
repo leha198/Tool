@@ -9,7 +9,7 @@ curl script.lehait.net/centos6.sh | sh
 ```
 ### Mount disk Centos
 ```
-wget -O- script.lehait.net/mount.sh | sh
+wget script.lehait.net/mount.sh; sh mount.sh
 ```
 ### ====== Support FO/SEO/SE ======
 #### Backup, clone webiste WP
