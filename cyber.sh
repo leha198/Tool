@@ -21,7 +21,7 @@ if [ -f /etc/redhat-release ]; then
 	cyber
 	echo "max_allowed_packet=1024M" >> /etc/my.cnf
 elif [ -f /etc/lsb-release ]; then
-	apt update -y && apt upgrade -y
+	apt-get update; apt-get upgrade -y
 	cyber
 	echo "max_allowed_packet=1024M" >> /etc/mysql/my.cnf
 fi
