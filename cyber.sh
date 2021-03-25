@@ -16,7 +16,7 @@ EOF
 function install {
 if [ -f /etc/redhat-release ]; then
 	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-	sysctl -p
+	sysctl -p > /dev/null
 	yum update -y
 	install_cyber
 	echo "max_allowed_packet=1024M" >> /etc/my.cnf
