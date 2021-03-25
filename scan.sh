@@ -13,7 +13,7 @@ grep -r --include \*.php '$user_agent_to_filter = array\|eval (gzinflate(base64_
 find * -name '*.php.suspected' -o -name '.*.ico' >> result
 sort -u result > $user.txt
 rm -f result malware
-if [[ -s $user.txt ]]; then	
+if [ -s $user.txt ]; then	
 	echo "Da tim thay ma doc. Danh sach ma doc trong $user.txt"
 else
 	echo "Khong tim thay ma doc"
