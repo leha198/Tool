@@ -1,5 +1,5 @@
 #!/bin/sh
-install_cyber () {
+install_cyber() {
 wget -O cyberpanel.sh https://cyberpanel.net/install.sh
 chmod +x cyberpanel.sh
 ./cyberpanel.sh -v ols -p r
@@ -13,7 +13,7 @@ update packages_package set bandwidth = '0' where id = '1';
 update packages_package set allowedDomains = '0' where id = '1';	
 EOF
 }
-install () {
+install() {
 if [ -f /etc/redhat-release ]; then
 	echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 	sysctl -p > /dev/null
