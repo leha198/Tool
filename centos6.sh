@@ -27,14 +27,20 @@ mkdir -p /var/tmp/system-upgrade/base/ /var/tmp/system-upgrade/extras/ /var/tmp/
 echo http://mirror.centos.org/centos/7/os/x86_64/ >> /var/tmp/system-upgrade/base/mirrorlist.txt
 echo http://mirror.centos.org/centos/7/extras/x86_64/ >> /var/tmp/system-upgrade/extras/mirrorlist.txt
 echo http://mirror.centos.org/centos/7/updates/x86_64/ >> /var/tmp/system-upgrade/updates/mirrorlist.txt
+#Add Centos 7 repo
+cat > /etc/yum.repos.d/centos7.repo <<EOF
+[centos7]
+name=centos7
+baseurl=http://mirror.centos.org/centos/7/os/x86_64/
+enabled=1
+gpgcheck=0
+EOF
 #Pre-Upgrade
 yes | preupg -v
 #Run CentOS Upgrade
-centos-upgrade-tool-cli --network=7 --instrepo=http://vault.centos.org/7.0.1406/os/x86_64/ << EOF
+centos-upgrade-tool-cli --force --network=7 --instrepo=http://vault.centos.org/7.0.1406/os/x86_64/ --cleanup-post << EOF
 Y
 EOF
-#Delete data update
-rm -rf preupgrade* upgrade.sh
 crontab <<EOF
 @reboot link /usr/lib64/libpcre.so.1 /lib64/libpcre.so.0
 @reboot systemctl enable sshd
