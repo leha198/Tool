@@ -32,4 +32,3 @@ curl script.lehait.net/inode.sh | sh
 ```
 curl script.lehait.net/scan.sh | sh
 ```
-### =========================
