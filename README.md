@@ -14,11 +14,11 @@ wget -O- script.lehait.net/mount.sh | sh
 ### ====== Support FO/SEO/SE ======
 #### Backup, clone webiste WP
 ```
-wget -O- script.lehait.net/backup.sh | sh
+wget script.lehait.net/backup.sh; sh backup.sh
 ```
 #### Copy to remote server
 ```
-wget -O- script.lehait.net/copy.sh | sh
+wget script.lehait.net/copy.sh; sh copy.sh
 ```
 #### Create log
 ```
