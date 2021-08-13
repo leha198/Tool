@@ -20,15 +20,7 @@ wget script.lehait.net/backup.sh | sh backup.sh
 ```
 wget script.lehait.net/copy.sh | sh copy.sh
 ```
-#### Create log
-```
-curl script.lehait.net/log.sh | sh
-```
 #### Check inode
 ```
 curl script.lehait.net/inode.sh | sh
-```
-#### Scan malware
-```
-curl script.lehait.net/scan.sh | sh
 ```
