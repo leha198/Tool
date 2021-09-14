@@ -11,7 +11,7 @@ if [ -n "$disk" ]; then
         echo "External disk ready to format and mount"
 else
         echo "No external disk found"
-        sleep 2 && exit
+	exit 2
 fi
 #Start mount data to external disk
 mkdir -p /backup_data
