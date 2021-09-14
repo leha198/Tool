@@ -14,7 +14,7 @@ function check {
             break
         else
             echo "Website not running wordpress..."
-            sleep 2; exit
+            exit 2
         fi
     done
 }
@@ -31,7 +31,7 @@ function bkdb {
         echo "Backup database successful"
     else
         echo "Backup database fail"
-        sleep 2; exit
+        exit 2
     fi
 }
 function bkcode {
@@ -63,7 +63,7 @@ function clone {
         echo "Restore database successful"
     else
         echo "Restore database fail"
-        sleep 2; exit
+        exit 2
     fi
     mysql -u $db_user -p$db_pass << EOF
 use $db_name;
