@@ -13,7 +13,7 @@ select domain in $ls; do
 		break
 	else
 		echo "Website not running wordpress..."
-		sleep 2; exit
+		exit 2
 	fi
 done
 db_name=`grep 'DB_NAME' $cnf | awk -F"'" '{print $4}'`
@@ -25,7 +25,7 @@ if [ $? -eq 0 ] ; then
 	echo "Backup database $domain successful"
 else
 	echo "Backup database $domain fail"
-	sleep 2; exit
+	exit 2
 fi
 cd $domain
 tar -czf /home/$user/bkdata/$domain.gz DocumentRoot --exclude DocumentRoot/wp-config.php
