@@ -11,7 +11,7 @@ select restore in $ls; do
 		break
 	else
 		echo "Please delete website and create website with wordpress"
-		sleep 2; exit
+		exit 2
 	fi
 done
 rm -rf $restore/DocumentRoot
