@@ -12,8 +12,6 @@ update packages_package set diskSpace = '0' where id = '1';
 update packages_package set bandwidth = '0' where id = '1';	
 update packages_package set allowedDomains = '0' where id = '1';	
 EOF
-#Set default SSL CA
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 }
 install() {
 if [ -f /etc/redhat-release ]; then
