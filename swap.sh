@@ -163,7 +163,7 @@ swappiness() {
     fi
     if [ -f /etc/redhat-release ]; then
         tuned=$(grep "vm.swappiness = $piness" /usr/lib/tuned/*/tuned.conf | awk -F':' '{print $1}')
-        sed -i "s/vm.swappiness = $piness/vm.swappiness = 10/g" $tuned
+        sed -i "s/vm.swappiness = $piness/vm.swappiness = 10/g" $tuned > /dev/null 2>&1
     fi
 }
 
