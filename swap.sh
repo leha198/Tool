@@ -9,7 +9,7 @@ removeSwap() {
     swapSpace=$(swapon -s | tail -1 |  awk '{print $1}')
 
     #turn off swapping
-    swapoff /$swapSpace
+    swapoff $swapSpace
 
     #make backup of fstab
     cp /etc/fstab /etc/fstab.$(date +%d-%m-%y)
@@ -18,7 +18,7 @@ removeSwap() {
     sed -i "/swap/d" /etc/fstab
 
     #remove swapfile
-    rm -f "/$swapSpace"
+    rm -f "$swapSpace"
 
     echo ""
     echo "--> Done"
