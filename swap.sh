@@ -160,11 +160,11 @@ swappiness() {
     piness=$(cat /proc/sys/vm/swappiness)
     if ! grep -q "vm.swappiness" /etc/sysctl.conf; then
 		echo "vm.swappiness=10" >> /etc/sysctl.conf
-	fi
+    fi
     if [ -f /etc/redhat-release ]; then
         tuned=$(grep "vm.swappiness = $piness" /usr/lib/tuned/*/tuned.conf | awk -F':' '{print $1}')
         sed -i "s/vm.swappiness = $piness/vm.swappiness = 10/g" $tuned
-     fi
+    fi
 }
 
 swappiness
