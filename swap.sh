@@ -158,9 +158,13 @@ setupSwapMain() {
 swappiness() {
     #Check swappiness
     piness=$(cat /proc/sys/vm/swappiness)
-    echo "vm.swappiness=10" >> /etc/sysctl.conf
-    tuned=$(grep "vm.swappiness = $piness" /usr/lib/tuned/*/tuned.conf | awk -F':' '{print $1}')
-    sed -i "s/vm.swappiness = $piness/vm.swappiness = 10/g" $tuned
+    if ! grep -q "vm.swappiness" /etc/sysctl.conf; then
+		echo "vm.swappiness=10" >> /etc/sysctl.conf
+	fi
+    if [ -f /etc/redhat-release ]; then
+        tuned=$(grep "vm.swappiness = $piness" /usr/lib/tuned/*/tuned.conf | awk -F':' '{print $1}')
+        sed -i "s/vm.swappiness = $piness/vm.swappiness = 10/g" $tuned
+     fi
 }
 
 swappiness
