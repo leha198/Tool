@@ -4,7 +4,7 @@
 removeSwap() {
     echo "Will remove swap and backup fstab."
     echo ""
-
+    
     #get the swapfile name
     swapSpace=$(swapon -s | tail -1 |  awk '{print $1}')
 
