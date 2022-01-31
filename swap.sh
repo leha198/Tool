@@ -65,7 +65,7 @@ createSwap() {
 
     if [ $gb -le 2 ]; then
         echo "   Memory is less than or equal to 2 Gb"
-        let swapSizeGb=$gb*2
+        let swapSizeGb=$gb
         echo "   -> Set swap size to $swapSizeGb Gb"
     fi
     if [ $gb -gt 2 ]; then
