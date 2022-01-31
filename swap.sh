@@ -90,7 +90,7 @@ createSwap() {
     trap "kill -9 $SPIN_PID" `seq 0 15`
 
     #convert gb to mb to avoid error: dd-memory-exhausted-by-input-buffer-of-size-bytes
-    let swapSizeGb=$gb*1024
+    let mb=$swapSizeGb*1024
 
     #create swap file on root system and set file size to mb variable
     echo "-> Create swap file."
