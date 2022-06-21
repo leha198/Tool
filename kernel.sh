@@ -1,5 +1,5 @@
 #!/bin/bash
-os=`grep -oP 'VERSION_ID="\K[^"]+' /etc/os-release`
+os=`grep -oP "[0-9]+" /etc/redhat-release | head -1`
 if [ $os = 7 ]; then
 	yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 	yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
