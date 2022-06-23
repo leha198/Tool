@@ -1,6 +1,6 @@
 ### Install Cyberpanel
 ```
-curl script.techtenten.com/cyber.sh | sh
+curl script.techtenten.com/cyber.sh | bash
 ```
 ### Mount disk Centos
 ```
@@ -8,7 +8,7 @@ wget script.techtenten.com/mount.sh | bash mount.sh
 ```
 #### Check inode
 ```
-curl script.techtenten.com/inode.sh | sh
+curl script.techtenten.com/inode.sh | bash
 ```
 ### ====== Support FO/SEO/SE ======
 #### Backup, clone webiste WP
