@@ -4,7 +4,7 @@ curl script.techtenten.com/cyber.sh | sh
 ```
 ### Mount disk Centos
 ```
-wget script.techtenten.com/mount.sh | sh mount.sh
+wget script.techtenten.com/mount.sh | bash mount.sh
 ```
 #### Check inode
 ```
