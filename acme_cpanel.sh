@@ -15,7 +15,7 @@ select domain in `uapi --output=yaml DomainInfo domains_data | grep "domain:" | 
 done
 #Issue SSL domain
 if [ ! -f .acme.sh/acme.sh ]; then
-	curl https://get.acme.sh | sh -s email=tenten@gmail.com > /dev/null 2>&1
+	curl https://get.acme.sh | sh -s email=acme.cpanel@gmail.com > /dev/null 2>&1
 fi
 .acme.sh/acme.sh --issue --webroot ${webdir} -d ${domain} -d www.${domain}
 .acme.sh/acme.sh --deploy --deploy-hook cpanel_uapi --domain ${domain} --domain www.${domain}
