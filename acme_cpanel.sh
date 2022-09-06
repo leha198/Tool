@@ -18,4 +18,8 @@ if [ ! -f .acme.sh/acme.sh ]; then
 	curl https://get.acme.sh | sh -s email=acme.cpanel@gmail.com > /dev/null 2>&1
 fi
 .acme.sh/acme.sh --issue --webroot ${webdir} -d ${domain} -d www.${domain}
+if [ ! $? -eq 0 ]; then
+	echo "Failed..."
+	exit
+fi
 .acme.sh/acme.sh --deploy --deploy-hook cpanel_uapi --domain ${domain} --domain www.${domain}
