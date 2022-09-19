@@ -16,46 +16,45 @@ function plugin_deact {
 }
 
 function backup {
-	PS3="Chose domain backup:"
-	select domain in `ls -l -Ilog | awk '/^d/ {print $9}'`; do
-		if [ -d ${domain}/DocumentRoot/wp-content ]; then
-			break
-		else
-			echo "Script only support WordPress..."
-			exit 2
-		fi
-	done
-
-	cd ${usr}/${domain}/DocumentRoot
-	wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O wp
-	plugin_act
-	bk_file=`php74 wp ai1wm backup | grep "location" | awk '{print $3}'`
-	mv -f ${bk_file} ${usr}/${domain}.wpress
-	plugin_deact
-}
-
-function restore {
-	cd ${usr}
-    PS3="Chose domain restore:"
-    select dm in `ls -l -Ilog -I${domain} | awk '/^d/ {print $9}'`; do
-        if [ -d ${dm}/DocumentRoot/wp-content ]; then
+    PS3="Chose domain backup:"
+    select domain in `ls -l -Ilog | awk '/^d/ {print $9}'`; do
+        if [ -d ${domain}/DocumentRoot/wp-content ]; then
             break
         else
             echo "Script only support WordPress..."
             exit 2
         fi
     done
-
-	cd ${usr}/${dm}/DocumentRoot
-	admin_pw=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 12`	
+    cd ${usr}/${domain}/DocumentRoot
     wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O wp
-	php74 wp core install --url=${dm} --title=Blog --admin_user=admin --admin_password=${admin_pw} --admin_email=tenten@gmail.com 2>&1 >/dev/null
-	php74 wp option update home "http://${dm}" > /dev/null
-	php74 wp option update siteurl "http://${dm}" > /dev/null
-	plugin_act
-	mv -f ${usr}/${domain}.wpress wp-content/ai1wm-backups/${domain}.wpress
-	php74 wp ai1wm restore ${domain}.wpress --yes > /dev/null
-	plugin_deact
+    plugin_act
+    bk_file=`php74 wp ai1wm backup | grep "location" | awk '{print $3}'`
+    mv -f ${bk_file} ${usr}/${domain}.wpress
+    plugin_deact
+}
+
+function restore {
+    cd ${usr}
+        PS3="Chose domain restore:"
+        select dm in `ls -l -Ilog -I${domain} | awk '/^d/ {print $9}'`; do
+            if [ -d ${dm}/DocumentRoot/wp-content ]; then
+                    break
+            else
+                    echo "Script only support WordPress..."
+                    exit 2
+            fi
+    done
+
+    cd ${usr}/${dm}/DocumentRoot
+    admin_pw=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 12`
+    wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O wp
+    php74 wp core install --url=${dm} --title=Blog --admin_user=admin --admin_password=${admin_pw} --admin_email=tenten@gmail.com 2>&1 >/dev/null
+    php74 wp option update home "http://${dm}" > /dev/null
+    php74 wp option update siteurl "http://${dm}" > /dev/null
+    plugin_act
+    mv -f ${usr}/${domain}.wpress wp-content/ai1wm-backups/${domain}.wpress
+    php74 wp ai1wm restore ${domain}.wpress --yes > /dev/null
+    plugin_deact
 }
 
 function sftp {
@@ -72,9 +71,9 @@ function sftp {
 }
 
 function remote {
-	cd ${usr}
-	wget -q https://raw.githubusercontent.com/leha198/script/master/restore.sh -O restore.sh
-	sed -i "s|domain_ins|${domain}|g" restore.sh
+    cd ${usr}
+    wget -q https://raw.githubusercontent.com/leha198/script/master/restore.sh -O restore.sh
+    sed -i "s|domain_ins|${domain}|g" restore.sh
     while sftp; do
         scp -P 9090 ${domain}.wpress restore.sh ${acc}@${host}:/home/${acc}
         if [ $? -eq 0 ]; then
@@ -103,11 +102,11 @@ function option {
         1 ) backup
             restore
             exit
-	    ;;
+        ;;
         2 ) backup
             remote
             exit
-	    ;;
+        ;;
         * ) echo "Error..."; sleep 1
     esac
 }
