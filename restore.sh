@@ -21,8 +21,8 @@ wget -q ${src_url}/all-in-one-wp-migration.zip -O all-in-one-wp-migration.zip
 wget -q ${src_url}/all-in-one-wp-migration-unlimited-extension.zip -O all-in-one-wp-migration-unlimited-extension.zip
 php74 wp plugin install all-in-one-wp-migration.zip --activate > /dev/null
 php74 wp plugin install all-in-one-wp-migration-unlimited-extension.zip --activate > /dev/null
-mv -f ${usr}/${bk} wp-content/ai1wm-backups/${bk}
-php74 wp ai1wm restore ${bk} --yes > /dev/null
+mv -f ${usr}/${bk}.wpress wp-content/ai1wm-backups/${bk}.wpress
+php74 wp ai1wm restore ${bk}.wpress --yes > /dev/null
 php74 wp plugin deactivate all-in-one-wp-migration all-in-one-wp-migration-unlimited-extension > /dev/null
 php74 wp plugin delete all-in-one-wp-migration all-in-one-wp-migration-unlimited-extension > /dev/null
 rm -rf wp all-in-one-wp-*.zip wp-content/ai1wm-backups
