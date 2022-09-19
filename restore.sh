@@ -3,7 +3,7 @@ usr="/home/$(whoami)"
 src_url="failoverhosting.com.vn"
 bk=domain_ins
 PS3="Chose domain restore:"
-select dm in `ls -l -Ilog -I${domain} | awk '/^d/ {print $9}'`; do
+select dm in `ls -l -Ilog | awk '/^d/ {print $9}'`; do
     if [ -d ${dm}/DocumentRoot/wp-content ]; then
         break
     else
