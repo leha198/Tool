@@ -41,7 +41,9 @@ ${wpcli} plugin deactivate all-in-one-wp-migration all-in-one-wp-migration-unlim
 ${wpcli} plugin delete all-in-one-wp-migration all-in-one-wp-migration-unlimited-extension > /dev/null
 ${wpcli} user create admin tenten@gmail.com --role=administrator --user_pass=${admin_pw} > /dev/null
 ${wpcli} user delete admin_dev --reassign=admin > /dev/null
-rm -f ${webdir}/wp ${webdir}/all-in-one-wp-migration.zip ${webdir}/all-in-one-wp-migration-unlimited-extension.zip
+rm -rf ${webdir}/wp ${webdir}/wp-content/ai1wm-backups ${webdir}/all-in-one-wp-migration.zip ${webdir}/all-in-one-wp-migration-unlimited-extension.zip
+echo ""
+echo "======================================="
 echo "Your website was created successfully"
 echo "http://"${domain}"/wp-admin"
 echo "Account:  admin"
