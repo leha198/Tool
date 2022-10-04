@@ -48,7 +48,7 @@ function restore {
     cd ${usr}/${dm}/DocumentRoot
     admin_pw=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 12`
     wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O wp
-    php74 wp core install --url=${dm} --title=Blog --admin_user=admin --admin_password=${admin_pw} --admin_email=tenten@gmail.com 2>&1 >/dev/null
+    php74 wp core install --url=${dm} --title=Blog --admin_user=admin --admin_password=${admin_pw} --admin_email=tenten@gmail.com --skip-email > /dev/null
     php74 wp option update home "http://${dm}" > /dev/null
     php74 wp option update siteurl "http://${dm}" > /dev/null
     plugin_act
