@@ -60,11 +60,12 @@ function restore {
 function sftp {
     while read -p "Copy to server:" host; do
         if [ ! -z ${host} ]; then
+            ip=`curl -s failoverhosting.com.vn/secureweb/listsrv | grep ${host} | awk -F':' '{print $2}'`
             break
         fi
     done
-    while read -p "User SFTP:" acc; do
-        if [ ! -z ${acc} ]; then
+    while read -p "User SFTP:" user; do
+        if [ ! -z ${user} ]; then
             break
         fi
     done
@@ -75,12 +76,12 @@ function remote {
     wget -q https://raw.githubusercontent.com/leha198/script/master/restore.sh -O restore.sh
     sed -i "s|domain_ins|${domain}|g" restore.sh
     while sftp; do
-        scp -P 9090 ${domain}.wpress restore.sh ${acc}@${host}:/home/${acc}
+        scp -P 9090 ${domain}.wpress restore.sh ${user}@${ip}:/home/${user}
         if [ $? -eq 0 ]; then
             break
         fi
     done
-    ssh -p 9090 ${acc}@${host} "sh restore.sh; rm -f restore.sh"
+    ssh -p 9090 ${user}@${ip} "sh restore.sh; rm -f restore.sh"
     rm -f ${domain}.wpress restore.sh
 }
 
