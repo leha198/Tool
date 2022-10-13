@@ -15,7 +15,7 @@ else
 fi
 #Start mount data to external disk
 mkdir -p /backup_data
-mkfs.ext4 $disk > /dev/null 2>&1
+mkfs.xfs $disk > /dev/null 2>&1
 mount $disk /backup_data
 echo "======================================================================"
 echo "Start sync data to external disk"
