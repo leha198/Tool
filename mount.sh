@@ -23,7 +23,7 @@ rsync -avzh $dir/ /backup_data
 umount $disk
 rm -rf $dir/* /backup_data
 mount $disk $dir
-echo "$disk $dir ext4 defaults 0 1" >> /etc/fstab
+echo "$disk $dir xfs defaults 0 1" >> /etc/fstab
 read -p "The process mount successful. Do you want to restart the server? [Y/n]: " boot
 if [ "$boot" = "Y" ] || [ "$boot" = "y" ] || [ -z "$boot" ]; then
         reboot
