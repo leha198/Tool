@@ -1,6 +1,6 @@
 #!/bin/bash
 tenantid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-token=`curl -i -X POST -H "Accept: application/json" -d '{"auth":{"passwordCredentials":{"username":"xxxxxxx","password":"xxxxx"},"tenantId":"7103692fcf8943bc916dc70b8c6c5fe2"}}' https://identity.han1.cloud.z.com/v2.0/tokens | grep -o 'id":"[^"]*' | head -1 | awk -F'"' '{print $3}'`
+token=`curl -i -X POST -H "Accept: application/json" -d '{"auth":{"passwordCredentials":{"username":"xxxxxxx","password":"xxxxx"},"tenantId":"xxxxxxxxxxxxxxxxxxxxxxxxxxxx"}}' https://identity.han1.cloud.z.com/v2.0/tokens | grep -o 'id":"[^"]*' | head -1 | awk -F'"' '{print $3}'`
 curl -i -X GET -H "Accept: application/json" -H "X-Auth-Token: $token" https://compute.han1.cloud.z.com/v2/$tenantid/servers | grep -o 'id":"[^"]*' | awk -F'"' '{print $3}' > /tmp/uuid
 for uuid in `cat /tmp/uuid`; do
         name=`curl -i -X GET -H "Accept: application/json" -H "X-Auth-Token: $token" https://compute.han1.cloud.z.com/v2/$tenantid/servers/$uuid | grep -o 'instance_name_tag":"[^"]*' | awk -F'"' '{print $3}'`
