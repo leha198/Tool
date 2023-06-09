@@ -21,6 +21,12 @@ select i in store-{1,2,3,4,5,6,7,8} news-{1,2,3,4,5,6,7} bds-{1,2,3} travel-{1,2
 	elif [ "${wb}" = news ]; then
 		id=tentenwordpress"${wi}"
 		break
+	elif [ "${wb}" = bds ]; then
+		id=tentenwordpress2"${wi}"
+		break
+	elif [ "${wb}" = travel ]; then
+		id=tentenwordpress3"${wi}"
+		break
 	fi
 done
 src_url="failoverhosting.com.vn"
