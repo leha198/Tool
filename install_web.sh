@@ -12,7 +12,7 @@ select domain in `uapi --output=yaml DomainInfo domains_data | grep "domain:" | 
 done
 
 PS3="Chose theme: "
-select i in store-{1,2,3,4,5,6} news-{1,2,3,4,5}; do
+select i in store-{1,2,3,4,5,6,7,8} news-{1,2,3,4,5,6,7} bds-{1,2,3} travel-{1,2}; do
 	wb=`echo ${i} | awk -F'-' '{print $1}'`
 	wi=`echo ${i} | awk -F'-' '{print $2}'`
 	if [ "${wb}" = store ]; then
