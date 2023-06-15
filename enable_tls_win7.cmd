@@ -24,7 +24,7 @@ wusa.exe kb3140245.msu /quiet /norestart
 REM Delete file hostfix
 del kb3140245.msu
 
-REM Add registry keys for TLS 1.1 and TLS 1.2
+REM Add registry keys
 setlocal
 for /f "delims=" %%a in ('wmic os get osarchitecture /value ^| findstr /i "OsArchitecture"') do set "arch=%%a"
 set "reg32bWinHttp=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp"
