@@ -15,7 +15,7 @@ if "%arch%"=="64" (
 )
 
 REM Download the file using the appropriate URL
-echo Update Hotfix and Enable TLS 1.1 & TLS 1.2...
+echo Update Hotfix and Enable TLS...
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%url%', 'kb3140245.msu')"
 
 REM Update hostfix
