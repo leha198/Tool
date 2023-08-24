@@ -1,18 +1,6 @@
-#!/usr/bin/env bash
-########################################################################
-# Author: Joseph Nix nixjdm@terminallabs.com 6-18-2015
-# Copyright (c) 2015 Terminal Labs
-# Distributed under the MIT License.
-# (See http://opensource.org/licenses/MIT)
-#
-# This tests the average page load time for a given url. It can be set
-# to run any number of tests, and then will average the results.
-#
-# Takes the url as the first arg, and the number of tests as the
-# second arg
 #
 # Example usage: ./speedtest.sh www.mysite.com 20
-########################################################################
+#
 
 url=$1
 iterations=$2
