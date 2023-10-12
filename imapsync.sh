@@ -11,7 +11,7 @@ email="$1"
 NORMAL="--host1 $src_server --password1 $pwd --ssl1 --host2 $des_server --password2 $pwd --ssl2"
 ZIMBRA="--host1 $src_server --authuser1 $zm_user --password1 $zm_pass --ssl1 --host2 $des_server --password2 $pwd --ssl2"
 #Change NORMAL or ZIMBRA
-	imapsync --buffersize 8192000 $ZIMBRA --user1 "$email" --user2 "$email" --syncinternaldates --addheader --useheader "Message-Id"
+	imapsync --buffersize 8192000 $NORMAL --user1 "$email" --user2 "$email" --syncinternaldates --addheader --useheader "Message-Id"
 }
 
 function install_package {
