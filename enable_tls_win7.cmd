@@ -14,6 +14,11 @@ if "%arch%"=="64" (
     set "url=http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/04/windows6.1-kb3140245-x86_cdafb409afbe28db07e2254f40047774a0654f18.msu"
 )
 
+REM Check service Windows Update
+sc query wuauserv | find "RUNNING" >nul || (
+    net start wuauserv >nul
+)
+
 REM Download the file using the appropriate URL
 echo Update Hotfix and enable TLS 1.2...
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%url%', 'kb3140245.msu')"
