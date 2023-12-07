@@ -48,4 +48,4 @@ else
 fi
 
 # Remove file FastPanel installation script
-rm -f install_fastpanel.sh
+rm -f install_fastpanel.sh silent-configure
