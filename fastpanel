@@ -5,9 +5,6 @@ sed -i "s|jp|vn|g" /etc/apt/sources.list
 # Update package list
 apt update
 
-echo "Y" > silent-configure
-apt-get -y upgrade < silent-configure
-
 # Upgrade installed packages
 apt upgrade -y
 
@@ -48,4 +45,4 @@ else
 fi
 
 # Remove file FastPanel installation script
-rm -f install_fastpanel.sh silent-configure
+rm -f install_fastpanel.sh
