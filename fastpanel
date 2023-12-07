@@ -1,10 +1,12 @@
 #!/bin/bash
-
 # Replace repo in /etc/apt/sources.list
 sed -i "s|jp|vn|g" /etc/apt/sources.list
 
 # Update package list
 apt update
+
+echo "Y" > silent-configure
+apt-get -y upgrade < silent-configure
 
 # Upgrade installed packages
 apt upgrade -y
