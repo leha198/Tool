@@ -14,7 +14,7 @@ else
 	exit 2
 fi
 #Start mount data to external disk
-echo -e "o\nn\np\n1\n\n\nw" fdisk $disk
+echo -e "o\nn\np\n1\n\n\nw" | fdisk $disk
 part=`fdisk -l $disk | sed -n '/^[/]/p' | awk '{print $1}'`
 mkdir -p /backup_data
 mkfs.xfs $part > /dev/null 2>&1
