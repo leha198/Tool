@@ -14,16 +14,18 @@ else
 	exit 2
 fi
 #Start mount data to external disk
+echo -e "o\nn\np\n1\n\n\nw" $disk
+part=`fdisk -l $disk | sed -n '/^[/]/p' | awk '{print $1}'`
 mkdir -p /backup_data
-mkfs.xfs $disk > /dev/null 2>&1
-mount $disk /backup_data
+mkfs.xfs $part > /dev/null 2>&1
+mount $part /backup_data
 echo "======================================================================"
 echo "Start sync data to external disk"
 rsync -avzh $dir/ /backup_data
-umount $disk
+umount $part
 rm -rf $dir/* /backup_data
-mount $disk $dir
-echo "$disk $dir  xfs  defaults,uquota,gquota,nofail  0 0" >> /etc/fstab
+mount $part $dir
+echo "$part $dir  xfs  defaults,uquota,gquota,nofail  0 0" >> /etc/fstab
 read -p "The process mount successful. Do you want to restart the server? [Y/n]: " boot
 if [ "$boot" = "Y" ] || [ "$boot" = "y" ] || [ -z "$boot" ]; then
         reboot
