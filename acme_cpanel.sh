@@ -1,8 +1,8 @@
 #!/bin/bash
 PS3="Chose domain install SSL: "
-select domain in `uapi --output=yaml DomainInfo domains_data | grep "domain:" | awk -F':' 'print $2' | sed '/^\s*$/d'`; do
-	webdir=`uapi --output=yaml DomainInfo domains_data | grep "domain: $domain" -B1 | grep "documentroot" | awk 'print $2'`
-	ip=`uapi --output=yaml DomainInfo domains_data | grep "domain: $domain" -A4 | grep "ip" | awk 'print $2'`
+select domain in `uapi --output=yaml DomainInfo domains_data | grep "domain:" | awk -F':' '{print $2}' | sed '/^\s*$/d'`; do
+	webdir=`uapi --output=yaml DomainInfo domains_data | grep "domain: $domain" -B1 | grep "documentroot" | awk '{print $2}'`
+	ip=`uapi --output=yaml DomainInfo domains_data | grep "domain: $domain" -A4 | grep "ip" | awk '{print $2}'`
 	dns=`dig +short A $domain | head -1`
 	dns_w=`dig +short A www.$domain | head -1`
 	#Check DNS domain
