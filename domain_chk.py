@@ -34,10 +34,8 @@ def get_dns_info(domain):
     try:
         ns_records = dns.resolver.resolve(domain, 'NS')
         nameserver = ns_records[0].target.to_text() if ns_records else None
-
         a_records = dns.resolver.resolve(domain, 'A')
         a_address = a_records[0].address if a_records else None
-
         return a_address, nameserver
     except Exception as e:
         return None, None
