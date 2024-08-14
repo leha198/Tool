@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if dpkg -l | grep -q '^ii  ufw '; then
+  echo "ufw is installed. Proceeding with removal..."
+
+  apt-get remove --purge -y ufw
+  rm -rf /etc/ufw
+
+  for chain in INPUT FORWARD OUTPUT; do
+    iptables -L $chain --line-numbers | awk '/ufw/ {print $1}' | sort -r | xargs -I {} iptables -D $chain {}
+  done
+
+  iptables -L | awk '/Chain .*ufw/ {print $2}' | xargs -I {} iptables -X {}
+
+  iptables-save
+
+  echo "ufw and related configurations have been removed."
+else
+  echo "ufw is not installed. No action needed."
+fi
