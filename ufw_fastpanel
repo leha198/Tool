@@ -36,6 +36,8 @@ EOT
 if [ -f /etc/iptables/rules.v6 ]; then
     rm -f /etc/iptables/rules.v6
 fi
-
+if [ -d /etc/ufw ]; then
+    rm -rf /etc/ufw
+fi
 #Restore rules
 iptables-restore < /etc/iptables/rules.v4
