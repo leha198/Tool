@@ -1,20 +1,38 @@
 #!/bin/bash
 
-if dpkg -l | grep -q '^ii  ufw '; then
-  echo "ufw is installed. Proceeding with removal..."
+# Remove UFW if installed
+command -v ufw &> /dev/null && apt remove ufw -y
 
-  apt-get remove --purge -y ufw
-  rm -rf /etc/ufw
+# Set up default iptables rules
+mkdir -p /etc/iptables
+cat << EOT > /etc/iptables/rules.v4
+*mangle
+:PREROUTING ACCEPT [109:169662]
+:INPUT ACCEPT [101:168958]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [105:237695]
+:POSTROUTING ACCEPT [105:237695]
+COMMIT
+*raw
+:PREROUTING ACCEPT [109:169662]
+:OUTPUT ACCEPT [105:237695]
+COMMIT
+*filter
+:INPUT ACCEPT [101:168958]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [105:237695]
+COMMIT
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+EOT
 
-  for chain in INPUT FORWARD OUTPUT; do
-    iptables -L $chain --line-numbers | awk '/ufw/ {print $1}' | sort -r | xargs -I {} iptables -D $chain {}
-  done
+# Clean up old files
+rm -f /etc/iptables/rules.v6
+rm -rf /etc/ufw
 
-  iptables -L | awk '/Chain .*ufw/ {print $2}' | xargs -I {} iptables -X {}
-
-  iptables-save
-
-  echo "ufw and related configurations have been removed."
-else
-  echo "ufw is not installed. No action needed."
-fi
+# Restore iptables rules
+iptables-restore < /etc/iptables/rules.v4
