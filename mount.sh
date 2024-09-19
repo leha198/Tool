@@ -4,6 +4,7 @@ do      if [ -d $dir ]; then
 		break
 	else
 		echo "Folder $dir not found, try again"
+		exit 2
 	fi
 done
 disk=`parted -l 2>&1 > /dev/null | awk -F ':' {'print $2'} | grep -Ev '[0-9]$|Warning|Read-only'`
