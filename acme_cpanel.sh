@@ -32,9 +32,8 @@ do
 
         if [[ "$resolved_ip" == "$ip" ]]; then
             echo "DNS A record for $domain matches the provided IP: $ip"
-            # Run the ACME installation command here
-            echo "Running ACME installation command for $domain..."
-            # acme.sh --issue -d "$domain" --dns ...
+            # Run the ACME get ssl command here
+            echo "Running ACME get SSL for $domain..."
             .acme.sh/acme.sh --issue --webroot "$documentroot" -d "$domain"
             .acme.sh/acme.sh --deploy --deploy-hook cpanel_uapi --domain "$domain"
         else
